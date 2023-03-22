@@ -1,0 +1,59 @@
+{% extends "job_application/base.html" %}
+
+{% block content %}
+<table class="table table-borderless">
+    <thead class="border-button font-wigth-bold">
+        <tr>
+            <td>Company Name</td>
+            <td>Job ID</td>
+            <td>Position Name</td>
+            <td>Date Submitted</td>
+            <td>Status</td>
+            <td>
+                <a href="{% url 'job_insert' %}" class="btn btn-outline-success"><i class="fa fa-plus"></i>Add New</a>
+
+
+                 
+                
+            </td>
+            
+                
+        </tr>
+
+    </thead>
+
+
+    <tbody>
+        {% for jobs in job_list %}
+            <tr>
+                <td>{{jobs.company_name}}</td>
+                <td>{{jobs.job_id}}</td>
+                <td>{{jobs.position_name}}</td>
+                <td>{{jobs.appl_submitted}}</td>
+                <td>{{jobs.status}}</td>
+
+
+                <td>
+                    <a href="{% url 'job_update' jobs.id %}" class="btn text-secondary px-0">
+                        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+                        <i class="fa fa-edit fa-lg"></i>
+
+
+                            <!--delete button -->
+                    <form action="{% url 'job_delete' jobs.id %}" method="POST" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn">
+                            <i class="fa fa-trash fa-lg text-danger float-right"></i>
+                        </button>
+                    </form>
+                </td>
+
+
+                
+            </tr>
+        {% endfor %}
+        
+    </tbody>
+</table>
+                    
+{% endblock content %}

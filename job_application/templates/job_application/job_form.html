@@ -1,0 +1,70 @@
+{% extends "job_application/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="form-group">
+    <form action="" method="POST" autocomplete="off">
+        {% csrf_token %}
+        {{ form.company_name|as_crispy_field }}
+        {{ form.job_id|as_crispy_field }}
+        {{ form.position_name|as_crispy_field }}
+        <div class="row">
+
+            <div class="col-md-4">
+                {{ form.appl_submitted|as_crispy_field }}
+            </div>
+
+            <div class="col-md-4">
+                {{ form.status|as_crispy_field }}
+            </div>
+
+            
+   
+           
+
+        </div>
+
+        
+        <div class="row">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+            <div class="col-md-8">
+                <button type="submit" class="button btn_success"><i class="fa fa-database fa-fw"></i>Submit</button>
+                <style>
+                
+                
+                    .button{
+                        background-color: #4CAF50; /* Green */
+                        border: none;
+                        color: white;
+                        padding: 15px 32px;
+                        text-align: center;
+                        text-decoration: none;
+                        display: inline-block;
+                        font-size: 16px;
+                    }
+                </style>
+            </div>
+
+            
+
+            <div class="col-mod-4">
+                <a href="{% url 'job_list' %}" class="btn btn-secondary btn-block btn-lg"><i class="fa fa-list"></i> Go to List</a>
+            </div>
+    
+            
+
+        </div>
+
+        
+
+
+        
+        <!--{{ form|crispy }} -->
+    </form>
+</div>
+
+
+
+                    
+{% endblock content %}
